@@ -12,7 +12,7 @@ const levels = [
   {
     category: "Front-End",
     description: "Desarrollo de interfaces web usando React, Next.js y Tailwind CSS. Implementación de sistemas complejos con arquitectura modular.",
-    icons: ["/icons/react.webp", "/icons/laravel5.png", "/icons/html.png", "/icons/css.png "],
+    icons: ["/icons/react.webp", "/icons/laravel5.png", "/icons/html.png", "/icons/angular.png "],
   },
   {
     category: "Back-End",
