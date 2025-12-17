@@ -58,27 +58,34 @@ export const itemsNavbar = [
 export const dataAboutPage = [
      {
         id: 1,
+        title: "Dev Full Stack JR. Geovoy",
+        subtitle: "Desarrollos de Proyecto / Mantenimiento",
+        description: "Desarrollo Full Stack en Back-end y Front-end en gestion de proyectos con gps , lectoras (transporte de personal)",
+        date: "Ago 2025 - continuando",
+    },
+     {
+        id: 2,
         title: "Interno en Dev Full Stack Nubit",
         subtitle: "Desarrollos de Proyecto",
         description: "Desarrollo Full Stack en Back-end y Front-end en gestion de licencias gubertamentales, seriadas y verficadas para su control y distribuicion ",
         date: "Ago 2025",
     },
     {
-        id: 2,
+        id: 3,
         title: "Frontend Developer",
         subtitle: "BlackFord",
         description: "Colabora con un equipo dinámico para desarrollar interfaces de usuario atractivas y funcionales que impulsen el éxito de nuestros clientes en el mundo digital.",
         date: "Feb 2024 ",
     },
     {
-        id: 3,
+        id: 4,
         title: "Creador de Experiencias Digitales",
         subtitle: "Creart",
         description: "Trabaja en proyectos emocionantes que desafían los límites de la creatividad y la tecnología. Únete a nosotros mientras creamos experiencias digitales cautivadoras que inspiran y cautivan a nuestros usuarios.",
         date: "May 2021",
     },
     {
-        id: 4,
+        id: 5,
         title: "Especialista en Desarrollo Frontend",
         subtitle: "Desarrollos personales",
         description: "Como desarrollador Front-end, tendrás la oportunidad de colaborar en proyectos diversos y desafiantes que te permitirán expandir tus habilidades y dejar tu huella en el mundo digital.",
