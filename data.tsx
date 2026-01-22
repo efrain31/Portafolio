@@ -1,4 +1,4 @@
-import { BookText, CodeSquare, HomeIcon, UserRound, Linkedin, Twitter, Rss, Twitch, Youtube, Crop, Pencil, Computer, Book, Rocket, Speech, Github, Phone, Workflow,ArrowRight } from "lucide-react";
+import { BookText, CodeSquare, UserRound, Linkedin, Crop, Pencil, Computer, Book,Github, Phone, Workflow,ArrowRight } from "lucide-react";
 
 //npm install lucide-react
 // https://lucide.dev/guide/packages/lucide-react
@@ -23,33 +23,28 @@ export const socialNetworks = [
 
 
 export const itemsNavbar = [
-    {
-        id: 1,
-        title: "Home",
-        icon: <HomeIcon size={25} color="#fff" strokeWidth={1} />,
-        link: "/",
-    },
+   
     {
         id: 2,
-        title: "User",
+        title: "Trayectora",
         icon: <UserRound size={25} color="#fff" strokeWidth={1} />,
         link: "/about-me",
     },
     {
         id: 3,
-        title: "Book",
+        title: "Habilidades",
         icon: <BookText size={25} color="#fff" strokeWidth={1} />,
         link: "../services",
     },
     {
         id: 4,
-        title: "Target",
+        title: "Proyectos",
         icon: <CodeSquare size={25} color="#fff" strokeWidth={1} />,
         link: "/portfolio",
     },
     {
         id: 5,
-        title: "Home",
+        title: "Staks",
         icon: <Workflow size={25} color="#fff" strokeWidth={1} />,
         link: "/testimonials",
     },
