@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 import { Pagination } from 'swiper/modules';
 import type { Swiper as SwiperType } from "swiper"; 
 import { serviceData } from '@/data';
@@ -50,10 +50,21 @@ const SliderServices = () => {
                     ))}
                 </Swiper>
 
-                <div className="flex justify-center mt-8">
+                <div className="flex flex-col items-center gap-2 mt-8">
+                    {/* Botón de atrás - ARRIBA */}
+                    <button
+                        onClick={() => swiperRef.current?.slidePrev()}
+                        className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
+                        aria-label="Slide anterior"
+                    >
+                        <ArrowLeft className="w-5 h-5 text-gray-700" />
+                    </button>
+                    
+                    {/* Botón de adelantar - ABAJO */}
                     <button
                         onClick={() => swiperRef.current?.slideNext()}
                         className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
+                        aria-label="Slide siguiente"
                     >
                         <ArrowRight className="w-5 h-5 text-gray-700" />
                     </button>
