@@ -43,7 +43,7 @@ const levels = [
   {
     category: "Servicios",
     description: "Implementación de servicios en la nube y APIs, incluyendo despliegue continuo con herramientas como Firebase y AWS.",
-    icons: ["/icons/firebase.png", "/icons/linux.png", "/icons/docker.png"],
+    icons: ["/icons/firebase.png", "/icons/linux.png", "/icons/docker.png", "/icons/git.png"],
     color: "from-red-500 to-rose-500",
     bgColor: "bg-gradient-to-r from-red-500/10 to-rose-500/10",
   },

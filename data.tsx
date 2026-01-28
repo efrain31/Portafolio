@@ -1,4 +1,4 @@
-import { BookText, CodeSquare, UserRound, Linkedin, Crop, Pencil, Computer, Book,Github, Phone, Workflow,ArrowRight } from "lucide-react";
+import { BookText, CodeSquare, UserRound, Linkedin, Crop, Pencil, Computer, Book, Github, Phone, Workflow, ArrowRight } from "lucide-react";
 
 //npm install lucide-react
 // https://lucide.dev/guide/packages/lucide-react
@@ -23,7 +23,7 @@ export const socialNetworks = [
 
 
 export const itemsNavbar = [
-   
+
     {
         id: 2,
         title: "Trayectora",
@@ -51,14 +51,14 @@ export const itemsNavbar = [
 ];
 
 export const dataAboutPage = [
-     {
+    {
         id: 1,
         title: "Dev Full Stack JR. Geovoy",
         subtitle: "Desarrollos de Proyecto / Mantenimiento",
         description: "Desarrollo Full Stack en Back-end y Front-end en gestion de proyectos con gps , lectoras (transporte de personal)",
         date: "Ago 2025 - continuando",
     },
-     {
+    {
         id: 2,
         title: "Interno en Dev Full Stack Nubit",
         subtitle: "Desarrollos de Proyecto",
@@ -120,6 +120,39 @@ export const dataCounter = [
 ];
 
 export const serviceData = [
+     {
+        icon: <Pencil />,
+        title: "Arquitectura ",
+        //(SE USAR VARUABLES Y FUNCIONES)
+        description: "Diseño arquitecturas basadas en abstracciones reutilizables",
+    }, {
+        icon: <Pencil />,
+        //(CONECTAR APIS)
+        title: " Integraciones",
+        description: "Implemento integraciones entre sistemas distribuidos",
+    }, {
+        icon: <Pencil />,
+        //(ARREGLO BUS)
+        title: "Insidencias",
+        description: "Resuelvo insidencias criticas en entornos productivos",
+    },
+     {
+        icon: <Pencil />,
+        //depoys
+        title: "Liberaciones",
+        description: "Orquesto procesos de liberacion de software en  servidores locales o externos",
+    },
+    {
+        icon: <Pencil />,
+        //CONSUTAS SQL 
+        title: "Optimizacion",
+        description: "Optimizacion de pertinencias de datos mediante consultas estructuradas",
+    },{
+        icon: <Pencil />,
+        //SUBIR CODIGO PUSH 
+        title: "Git's",
+        description: "Ejecuto pipelines de entrega continua",
+    },
     {
         icon: <Pencil />,
         title: "Diseño web",
@@ -139,8 +172,8 @@ export const serviceData = [
         icon: <Crop />,
         title: "Branding",
         description: "Desarrollo de una identidad para una marca sólida coherente,diseño de logotipo, colores y elementos visuales",
-    },  
-     {
+    },
+    {
         icon: <ArrowRight className="animate-bounce" />,
         title: "Ver más",
         description: "Desliza para descubrir más servicios",
@@ -148,6 +181,20 @@ export const serviceData = [
 ];
 
 export const dataPortfolio = [
+    {
+        id: 6,
+        title: "Portafolio Fotografico (React & .next)",
+        image: "/img/alecv.png",
+        urlGithub: "#!",
+        urlDemo: "https://ale-vazquez.vercel.app/",
+    },
+    {
+        id: 7,
+        title: "ERP Empresarial (PhP,JS,etc.)",
+        image: "/img/BCollage.png",
+        urlGithub: "#!",
+        urlDemo: "https://www.geovoy.com/app/",
+    },
     {
         id: 2,
         title: "Ecommerce (React.next & tailwind)",
@@ -183,7 +230,6 @@ export const dataPortfolio = [
         urlGithub: "#!",
         urlDemo: "#!",
     },
-
 ];
 
 export const dataTestimonials = [
