@@ -91,14 +91,14 @@ export const dataAboutPage = [
 export const dataCounter = [
     {
         id: 0,
-        endCounter: 2,
+        endCounter: 8,
         text: "Experiencia",
         lineRight: true,
         lineRightMobile: true,
     },
     {
         id: 1,
-        endCounter: 3,
+        endCounter: 15,
         text: "Clientes satisfechos",
         lineRight: true,
         lineRightMobile: false,
