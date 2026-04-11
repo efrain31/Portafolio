@@ -195,6 +195,13 @@ export const dataPortfolio = [
         urlGithub: "#!",
         urlDemo: "https://www.geovoy.com/app/",
     },
+     {
+        id: 8,
+        title: "Consumo de APIs extrernas y PhP,JS,Vite.)",
+        image: "/img/maps.png",
+        urlGithub: "#!",
+        urlDemo: "https://rutasfoxconnbusmen.geovoy.com/",
+    },
     {
         id: 2,
         title: "Ecommerce (React.next & tailwind)",
