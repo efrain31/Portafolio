@@ -1,6 +1,3 @@
-
-//npm install framer-motion
-
 export const transitionVariantsPage = {
     initial: {
         x: "100%",
@@ -33,6 +30,29 @@ export const motionTransitionsAbout = {
     },
 };
 
+
+export const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.15,
+            delayChildren: 0.2,
+        },
+    },
+};
+
+export const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            duration: 0.5,
+            ease: "easeOut",
+        },
+    },
+};
 
 export const fadeIn = (position: string) => {
     return {

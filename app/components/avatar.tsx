@@ -21,16 +21,22 @@ export function Avatar() {
     useEffect(() => {
         setIsClient(true);
 
+        let rafId: number;
         const handleMouseMove = (e: MouseEvent) => {
-            if (!isClient) return;
-            const x = (e.clientX / window.innerWidth - 0.15) * 45;
-            const y = (e.clientY / window.innerHeight - 0.15) * 45;
-            setMousePosition({ x, y });
+            cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(() => {
+                const x = (e.clientX / window.innerWidth - 0.15) * 45;
+                const y = (e.clientY / window.innerHeight - 0.15) * 45;
+                setMousePosition({ x, y });
+            });
         };
 
         window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, [isClient]);
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            cancelAnimationFrame(rafId);
+        };
+    }, []);
 
     return (
         <MotionTransition
@@ -116,30 +122,6 @@ export function Avatar() {
                 )}
             </div>
 
-            {/* Estilos CSS para animaciones */}
-            <style jsx>{`
-                @keyframes spin-slow {
-                    from { transform: rotate(0deg); }
-                    to { transform: rotate(360deg); }
-                }
-                .animate-spin-slow {
-                    animation: spin-slow 25s linear infinite;
-                }
-                
-                @keyframes float {
-                    0%, 100% { 
-                        transform: translateY(0) translateX(0);
-                        opacity: 0.6;
-                    }
-                    50% { 
-                        transform: translateY(-15px) translateX(5px);
-                        opacity: 0.2;
-                    }
-                }
-                .animate-float {
-                    animation: float 4s ease-in-out infinite;
-                }
-            `}</style>
         </MotionTransition>
     );
 }

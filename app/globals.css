@@ -2,14 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html, body {
   color: #fff;
   background: #2b0b54;
 }
 
-main{
+main {
   background: #0b2d4f;
   height: 100vh;
   height: 100dvh;
+}
+
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 30%; }
+  50% { background-position: 100% 30%; }
+}
+.animate-gradient-x {
+  background-size: 100% 100%;
+  animation: gradient-x 3s ease infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 25s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-15px) translateX(5px);
+    opacity: 0.2;
+  }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
 }

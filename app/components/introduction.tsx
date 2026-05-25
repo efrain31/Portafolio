@@ -133,26 +133,29 @@ const Introduction = () => {
                             <div className="absolute inset-8 border-4 border-yellow-400/10 rounded-full"></div>
                         </motion.div>
 
-                        {/* Glow solar */}
-                        <div className="absolute -inset-6 bg-gradient-to-r from-orange-600/40 via-yellow-500/30 to-red-600/40 rounded-3xl blur-2xl"></div>
-                        
-                        {/* Imagen con filtro solar */}
-                        <div className="relative overflow-hidden rounded-2xl shadow-2xl shadow-orange-500/30">
+                        {/* Glow solar circular */}
+                        <div className="absolute -inset-6 bg-gradient-to-r from-orange-600/40 via-yellow-500/30 to-red-600/40 rounded-full blur-3xl"></div>
+
+                        {/* Halo exterior */}
+                        <div className="absolute -inset-3 bg-gradient-to-br from-orange-500/25 via-yellow-400/15 to-transparent rounded-full blur-xl"></div>
+
+                        {/* Imagen circular */}
+                        <div className="relative aspect-square overflow-hidden rounded-full shadow-2xl shadow-orange-500/40 ring-2 ring-orange-500/30">
                             <div className="absolute inset-0 bg-gradient-to-tr from-orange-600/20 to-yellow-400/10 z-10 mix-blend-overlay"></div>
                             <div className="absolute inset-0 bg-gradient-to-br from-transparent via-yellow-200/5 to-orange-500/10 z-10"></div>
-                            
+
                             <Image
                                 src="/img/space2.png"
                                 priority
                                 width={1200}
-                                height={800}
+                                height={1200}
                                 alt="Avatar espacial cerca del sol"
-                                className="relative w-full h-auto transform transition-transform duration-500 hover:scale-105"
+                                className="relative w-full h-full object-cover transform transition-transform duration-500 hover:scale-105"
                                 style={{
                                     filter: 'brightness(1.1) contrast(1.2) saturate(1.3)'
                                 }}
                             />
-                            
+
                             {/* Efecto de calor */}
                             <div className="absolute inset-0 bg-gradient-to-t from-orange-600/0 via-orange-400/10 to-transparent pointer-events-none"></div>
                         </div>

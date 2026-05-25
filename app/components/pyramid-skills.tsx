@@ -7,45 +7,78 @@ import { useState } from "react";
 const levels = [
   {
     category: "UI/UX",
-    description: "Diseño de interfaces y experiencia de usuario, enfocado en usabilidad y a la experiencia de usuarios.",
-    icons: ["/icons/adobexd.webp", "/icons/figma2.webp", "/icons/adobesuite.jpg"],
+    description: "Diseño de interfaces y experiencia de usuario, enfocado en usabilidad y en la experiencia de usuarios.",
+    icons: [
+      { src: "/icons/adobexd.webp",    label: "Adobe XD" },
+      { src: "/icons/figma2.webp",     label: "Figma" },
+      { src: "/icons/figma.png",       label: "Figma" },
+      { src: "/icons/adobesuite.jpg",  label: "Adobe Suite" },
+    ],
     color: "from-orange-500 to-pink-500",
-    bgColor: "bg-gradient-to-r from-orange-500/10 to-pink-500/10",
+    bgColor: "bg-gradient-to-br from-orange-500/20 to-pink-500/15",
   },
   {
     category: "Front-End",
-    description: "Desarrollo de interfaces web usando React, Next.js y Tailwind CSS. Implementación de sistemas complejos con arquitectura modular.",
-    icons: ["/icons/react.webp", "/icons/laravel5.png", "/icons/html.png"],
+    description: "Desarrollo de interfaces web usando React, Next.js, Angular y Tailwind CSS con arquitectura modular.",
+    icons: [
+      { src: "/icons/html.png",        label: "HTML5" },
+      { src: "/icons/css.png",         label: "CSS3" },
+      { src: "/icons/javascrity.png",  label: "JavaScript" },
+      { src: "/icons/react.webp",      label: "React" },
+      { src: "/icons/angular.png",     label: "Angular" },
+      { src: "/icons/laravel5.png",    label: "Laravel" },
+    ],
     color: "from-blue-500 to-cyan-500",
-    bgColor: "bg-gradient-to-r from-blue-500/10 to-cyan-500/10",
+    bgColor: "bg-gradient-to-br from-blue-500/20 to-cyan-500/15",
   },
   {
     category: "Back-End",
-    description: "Creación de APIs y lógica del servidor con Node.js. Experiencia en bases de datos y escalabilidad mediana.",
-    icons: ["/icons/node2.png", "/icons/javascrity.png", "/icons/python.png", "/icons/Fastapi.webp"],
+    description: "Creación de APIs REST y lógica de servidor. Experiencia en múltiples lenguajes y frameworks.",
+    icons: [
+      { src: "/icons/node2.png",       label: "Node.js" },
+      { src: "/icons/python.png",      label: "Python" },
+      { src: "/icons/Fastapi.webp",    label: "FastAPI" },
+      { src: "/icons/java.png",        label: "Java" },
+      { src: "/icons/c++.png",         label: "C++" },
+    ],
     color: "from-green-500 to-emerald-500",
-    bgColor: "bg-gradient-to-r from-green-500/10 to-emerald-500/10",
+    bgColor: "bg-gradient-to-br from-green-500/20 to-emerald-500/15",
   },
   {
     category: "Móvil",
-    description: "Desarrollo de aplicaciones móviles nativas y multiplataforma utilizando Android.",
-    icons: ["/icons/kotlin2.jpg"],
+    description: "Desarrollo de aplicaciones móviles nativas y multiplataforma para Android e iOS.",
+    icons: [
+      { src: "/icons/kotlin2.jpg",     label: "Kotlin" },
+      { src: "/icons/kotlin.png",      label: "Kotlin" },
+      { src: "/icons/fluter.jpg",      label: "Flutter" },
+      { src: "/icons/ios.png",         label: "iOS" },
+    ],
     color: "from-purple-500 to-violet-500",
-    bgColor: "bg-gradient-to-r from-purple-500/10 to-violet-500/10",
+    bgColor: "bg-gradient-to-br from-purple-500/20 to-violet-500/15",
   },
   {
     category: "BD",
-    description: "Gestión y consultas de bases de datos SQL y NoSQL, optimizando rendimiento en grandes volúmenes de datos.",
-    icons: ["/icons/mysql2.jpg", "/icons/mongo.png"],
+    description: "Gestión y consultas de bases de datos SQL y NoSQL, optimizando rendimiento en grandes volúmenes.",
+    icons: [
+      { src: "/icons/mysql2.jpg",      label: "MySQL" },
+      { src: "/icons/mysql.png",       label: "MySQL" },
+      { src: "/icons/mongo.png",       label: "MongoDB" },
+    ],
     color: "from-yellow-500 to-amber-500",
-    bgColor: "bg-gradient-to-r from-yellow-500/10 to-amber-500/10",
+    bgColor: "bg-gradient-to-br from-yellow-500/20 to-amber-500/15",
   },
   {
-    category: "Servicios",
-    description: "Implementación de servicios en la nube y APIs, incluyendo despliegue continuo con herramientas como Firebase y AWS.",
-    icons: ["/icons/firebase.png", "/icons/linux.png", "/icons/docker.png", "/icons/git.png"],
+    category: "DevOps & Tools",
+    description: "Herramientas de control de versiones, contenedores y despliegue continuo en entornos productivos.",
+    icons: [
+      { src: "/icons/git.png",         label: "Git" },
+      { src: "/icons/git2.png",        label: "GitHub" },
+      { src: "/icons/docker.png",      label: "Docker" },
+      { src: "/icons/linux.png",       label: "Linux" },
+      { src: "/icons/firebase.png",    label: "Firebase" },
+    ],
     color: "from-red-500 to-rose-500",
-    bgColor: "bg-gradient-to-r from-red-500/10 to-rose-500/10",
+    bgColor: "bg-gradient-to-br from-red-500/20 to-rose-500/15",
   },
 ];
 
@@ -112,37 +145,39 @@ const PyramidSkills = () => {
                   {level.description}
                 </p>
 
-                {/* Iconos con efecto mejorado */}
+                {/* Iconos */}
                 <div className="flex flex-wrap gap-3">
                   {level.icons.map((icon, iconIndex) => (
                     <motion.div
                       key={`${index}-${iconIndex}`}
                       initial={{ scale: 0, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: index * 0.1 + iconIndex * 0.05 }}
-                      whileHover={{ scale: 1.15, y: -5 }}
-                      whileTap={{ scale: 0.95 }}
+                      transition={{ delay: index * 0.08 + iconIndex * 0.04 }}
+                      whileHover={{ scale: 1.18, y: -6 }}
+                      whileTap={{ scale: 0.93 }}
                       className="relative group/icon"
+                      title={icon.label}
                     >
-                      {/* Fondo del icono */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 rounded-xl blur-sm opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300"></div>
-                      
                       {/* Contenedor del icono */}
-                      <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gray-800/50 border border-gray-700/50 flex items-center justify-center p-2 backdrop-blur-sm transition-all duration-300 group-hover/icon:border-gray-600">
+                      <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gray-900/70 border border-gray-700/60 flex items-center justify-center p-2 backdrop-blur-sm transition-all duration-300 group-hover/icon:border-white/30 group-hover/icon:bg-gray-800/80 shadow-md">
                         <Image
-                          src={icon}
-                          alt={`Icon ${iconIndex + 1} for ${level.category}`}
+                          src={icon.src}
+                          alt={icon.label}
                           width={40}
                           height={40}
-                          className="object-contain w-8 h-8 md:w-10 md:h-10 filter brightness-100 group-hover/icon:brightness-125 transition-all duration-300"
+                          className="object-contain w-8 h-8 md:w-9 md:h-9 filter brightness-100 group-hover/icon:brightness-125 transition-all duration-300"
                         />
-                        
-                        {/* Efecto de brillo en hover */}
-                        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-white/0 via-white/5 to-white/0 opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300"></div>
+                        {/* Brillo en hover */}
+                        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/0 via-white/5 to-white/0 opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300" />
                       </div>
-                      
-                      {/* Punto decorativo */}
-                      <div className={`absolute -top-1 -right-1 w-2 h-2 rounded-full bg-gradient-to-r ${level.color} opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300`}></div>
+
+                      {/* Tooltip con nombre */}
+                      <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-gray-900 border border-gray-700 rounded text-[10px] text-white/80 whitespace-nowrap opacity-0 group-hover/icon:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                        {icon.label}
+                      </div>
+
+                      {/* Punto gradiente */}
+                      <div className={`absolute -top-1 -right-1 w-2 h-2 rounded-full bg-gradient-to-r ${level.color} opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300`} />
                     </motion.div>
                   ))}
                 </div>
@@ -181,7 +216,7 @@ const PyramidSkills = () => {
         >
           <p className="text-gray-400 text-sm">
             <span className="text-blue-400 font-medium">6 categorías</span> • 
-            <span className="text-purple-400 font-medium mx-2">{levels.reduce((acc, level) => acc + level.icons.length, 0)} tecnologías</span> • 
+            <span className="text-purple-400 font-medium mx-2">{levels.reduce((acc, level) => acc + level.icons.length, 0)} iconos</span> • 
             <span className="text-pink-400 font-medium mx-2">Stack completo</span>
           </p>
         </motion.div>

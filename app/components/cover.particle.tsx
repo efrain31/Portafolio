@@ -38,7 +38,7 @@ export const CoverParticles = () => {
                 value: "transparent",
             },
         },
-        fpsLimit: 120,
+        fpsLimit: 60,
         interactivity: {
             events: {
                 onClick: {
@@ -47,7 +47,7 @@ export const CoverParticles = () => {
                 },
                 onHover: {
                     enable: true,
-                    mode: ["connect", "repulse", "bubble"],
+                    mode: "repulse",
                     parallax: {
                         enable: true,
                         smooth: 10,
@@ -162,7 +162,7 @@ export const CoverParticles = () => {
                     width: 1920,
                     height: 1080
                 },
-                value: 120
+                value: 70
             },
             opacity: {
                 value: {

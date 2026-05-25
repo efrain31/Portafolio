@@ -49,10 +49,11 @@ const Navbar = () => {
                                 whileTap={{ scale: 0.9 }}
                                 className="relative group"
                             >
-                                <Link 
-                                    href={item.link} 
+                                <Link
+                                    href={item.link}
                                     className="relative block p-3 md:p-4 rounded-full transition-all duration-300"
                                     aria-label={item.title || `Navegar a ${item.link}`}
+                                    aria-describedby={`tooltip-${item.id}`}
                                 >
                                     {/* Efecto de fondo en hover - con gradiente naranja/morado */}
                                     <div className={`absolute inset-0 rounded-full transition-all duration-300 ${
@@ -90,8 +91,12 @@ const Navbar = () => {
                                     )}
                                 </Link>
                                 
-                                {/* Tooltip mejorado - con gradiente naranja/morado */}
-                                <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 px-3 py-2 bg-gradient-to-r from-orange-600 to-purple-600 text-white text-sm font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap shadow-xl">
+                                {/* Tooltip */}
+                                <div
+                                    id={`tooltip-${item.id}`}
+                                    role="tooltip"
+                                    className="absolute -top-12 left-1/2 transform -translate-x-1/2 px-3 py-2 bg-gradient-to-r from-orange-600 to-purple-600 text-white text-sm font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap shadow-xl"
+                                >
                                     {item.title || item.link.replace('/', '')}
                                     <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-gradient-to-r from-orange-600 to-purple-600 rotate-45"></div>
                                 </div>
@@ -167,21 +172,6 @@ const Navbar = () => {
                 />
             </motion.nav>
             
-            {/* Estilos para animación de gradiente */}
-            <style jsx>{`
-                @keyframes gradient-x {
-                    0%, 100% {
-                        background-position: 0% 30%;
-                    }
-                    50% {
-                        background-position: 100% 30%;
-                    }
-                }
-                .animate-gradient-x {
-                    background-size: 100% 100%;
-                    animation: gradient-x 3s ease infinite;
-                }
-            `}</style>
         </MotionTransition>
     );
 }
