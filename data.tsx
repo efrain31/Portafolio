@@ -195,16 +195,17 @@ export const dataPortfolio = [
         title: "Portafolio Fotográfico",
         description: "Sitio web de portafolio para fotógrafo profesional con galería dinámica y diseño responsivo.",
         techStack: ["React", "Next.js", "Tailwind CSS"],
-        image: "/img/alecv.png",
+        images: ["/img/ALEV2.png","/img/ALEV4.png","/img/ALEV3.png","/img/ALEV5.png"],
         urlGithub: "#!",
         urlDemo: "https://ale-vazquez.vercel.app/",
     },
-    {
+     {
         id: 7,
         title: "ERP Empresarial",
         description: "Sistema de gestión empresarial con control de proyectos GPS y lectoras para transporte de personal.",
         techStack: ["PHP", "JavaScript", "MySQL"],
-        image: "/img/BCollage.png",
+        images: ["/img/GEOVOY.png","/img/GEOVOY2.png","/img/GEOVOY3.png","/img/GEOVOY4.png"],
+
         urlGithub: "#!",
         urlDemo: "https://www.geovoy.com/app/",
     },
@@ -217,7 +218,7 @@ export const dataPortfolio = [
         urlGithub: "#!",
         urlDemo: "https://rutasfoxconnbusmen.geovoy.com/",
     },
-    {
+   {
         id: 2,
         title: "Ecommerce — GoodPet",
         description: "Tienda en línea para mascotas con catálogo de productos, carrito y diseño moderno.",
@@ -239,7 +240,7 @@ export const dataPortfolio = [
         id: 1,
         title: "Landing Page — Acuaclub",
         description: "Landing page interactiva con integración de hardware Arduino para control de sensores.",
-        techStack: ["HTML", "CSS", "Arduino"],
+        techStack: ["Angular", "CSS", "Arduino"],
         image: "/img/Acuaclub.png",
         urlGithub: "#!",
         urlDemo: "#!",

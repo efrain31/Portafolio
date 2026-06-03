@@ -3,6 +3,7 @@
 import { dataAboutPage } from "@/data";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { titleVariants, subtitleVariants, paragraphVariants } from "@/app/utils/animation-variants";
 
 const TimeLine = () => {
     const [expandedCard, setExpandedCard] = useState<number | null>(null);
@@ -88,12 +89,12 @@ const TimeLine = () => {
                                             </div>
                                         </div>
                                         
-                                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                                        <motion.h3 variants={titleVariants} className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
                                             {data.title}
-                                        </h3>
-                                        <p className="text-gray-700 font-medium mb-3 bg-gradient-to-r from-blue-50 to-transparent p-2 rounded-lg">
+                                        </motion.h3>
+                                        <motion.p variants={subtitleVariants} className="text-gray-700 font-medium mb-3 bg-gradient-to-r from-blue-50 to-transparent p-2 rounded-lg">
                                             {data.subtitle}
-                                        </p>
+                                        </motion.p>
                                         
                                         {/* Contenido colapsable */}
                                         <AnimatePresence>
