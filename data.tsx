@@ -214,7 +214,7 @@ export const dataPortfolio = [
         title: "Consumo de APIs Externas",
         description: "Plataforma de visualización de rutas en tiempo real integrando APIs externas de geolocalización.",
         techStack: ["PHP", "JavaScript", "Vite"],
-        image: "/img/maps.png",
+        images: ["/img/rutas1.png","/img/rutas2.png","/img/rutas3.png"],
         urlGithub: "#!",
         urlDemo: "https://rutasfoxconnbusmen.geovoy.com/",
     },
