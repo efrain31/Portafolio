@@ -6,7 +6,7 @@ import ContainerPage from "@/app/components/container-page";
 import { CoverParticles } from "@/app/components/cover.particle";
 import { motion, AnimatePresence } from "framer-motion";
 import { containerVariants, itemVariants } from "@/app/utils/motion-transitions";
-import { titleVariants, subtitleVariants, paragraphVariants, cardVariants, perspective3DVariants } from "@/app/utils/animation-variants";
+import { titleVariants, paragraphVariants, perspective3DVariants } from "@/app/utils/animation-variants";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
@@ -230,7 +230,7 @@ const PortfolioPage = () => {
                                                     whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(6, 182, 212, 0.5)" }}
                                                     whileTap={{ scale: 0.95 }}
                                                 >
-                                                    Ver Demo
+                                                    IR a Web
                                                 </motion.button>
                                             )}
                                             {data.urlGithub && data.urlGithub !== "#!" && (

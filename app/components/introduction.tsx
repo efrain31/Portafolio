@@ -49,6 +49,17 @@ const Introduction = () => {
         }
     };
 
+    const floatingVariants = {
+        float: {
+            y: [0, -20, 0],
+            transition: {
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+            }
+        }
+    };
+
     return (
         <div className="z-20 w-full bg-gradient-to-b from-darkBg/60 via-black/50 to-transparent overflow-hidden">
             <motion.div 
@@ -111,11 +122,15 @@ const Introduction = () => {
                 </div>
 
                 {/* Imagen con efectos solares */}
-                <motion.div 
+                <motion.div
                     className="flex justify-center md:justify-start w-full md:w-1/2 relative z-10"
                     variants={itemVariants}
                 >
-                    <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
+                    <motion.div
+                        className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg"
+                        variants={floatingVariants}
+                        animate="float"
+                    >
                         {/* Efecto de radiación solar */}
                         <motion.div 
                             className="absolute -inset-8"
@@ -187,20 +202,8 @@ const Introduction = () => {
                             }}
                         />
 
-                        {/* Texto de "Cerca del sol" */}
-                        <motion.div 
-                            className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-600/90 to-red-600/90 backdrop-blur-sm px-4 py-2 rounded-full"
-                            initial={{ y: 20, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ delay: 1, duration: 0.8 }}
-                        >
-                            <span className="text-xs md:text-sm font-bold text-yellow-100 flex items-center gap-1">
-                                <span className="text-yellow-300 animate-pulse">☀️</span>
-                               DEV'S
-                                <span className="text-yellow-300 animate-pulse ml-1">🔥</span>
-                            </span>
-                        </motion.div>
-                    </div>
+
+                    </motion.div>
                 </motion.div>
 
                 {/* Texto y botones */}

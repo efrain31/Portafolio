@@ -242,7 +242,7 @@ const PortfolioBox = ({ data, index }: PortfolioBoxProps) => {
             }}
             className="w-full bg-white hover:bg-gray-100 text-gray-900 font-bold py-3 px-4 rounded-full text-sm transition-all hover:scale-105"
           >
-            {hasDemo ? "Ver Demo" : "Ver Proyecto"}
+            {hasDemo ? " IR a Web" : "Ver Proyecto"}
           </button>
         </div>
       </motion.article>
