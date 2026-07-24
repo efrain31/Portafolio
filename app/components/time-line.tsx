@@ -3,15 +3,15 @@
 import { dataAboutPage } from "@/data";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { titleVariants, subtitleVariants, paragraphVariants } from "@/app/utils/animation-variants";
+import { titleVariants, subtitleVariants } from "@/app/utils/animation-variants";
 
 const TimeLine = () => {
     const [expandedCard, setExpandedCard] = useState<number | null>(null);
-    
+
     // Dividir los datos: 3 arriba, 2 abajo
     const topItems = dataAboutPage.slice(0, 3);
     const bottomItems = dataAboutPage.slice(3, 5);
-    
+
     const handleCardClick = (index: number) => {
         setExpandedCard(expandedCard === index ? null : index);
     };
@@ -109,25 +109,25 @@ const TimeLine = () => {
                                                         {data.description}
                                                     </p>
                                                     
-                                                    {/* Detalles adicionales (puedes agregar más información aquí) */}
+                                                    {/* Detalles adicionales */}
                                                     <div className="mt-4 space-y-3">
-                                                         <div className="flex items-center text-sm text-gray-500">
-                                                            <svg className="w-4 h-4 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                                        <div className="flex items-center text-sm text-gray-500">
+                                                            <svg className={`w-4 h-4 mr-2 text-gray-600`} fill="currentColor" viewBox="0 0 20 20">
                                                                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                                                             </svg>
-                                                            <span>Duración: en curso</span>
+                                                            <span>Duración: {data.duration}</span>
                                                         </div>
                                                         <div className="flex items-center text-sm text-gray-500">
-                                                            <svg className="w-4 h-4 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                                                            <svg className={`w-4 h-4 mr-2 text-gray-600`} fill="currentColor" viewBox="0 0 20 20">
                                                                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                                                             </svg>
-                                                            <span>Duración: 12 meses</span>
+                                                            <span>Estado: {data.status}</span>
                                                         </div>
                                                         <div className="flex items-center text-sm text-gray-500">
-                                                            <svg className="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                                            <svg className={`w-4 h-4 mr-2 text-gray-600`} fill="currentColor" viewBox="0 0 20 20">
                                                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                                                             </svg>
-                                                            <span>Proyecto completado exitosamente</span>
+                                                            <span>{data.achievement}</span>
                                                         </div>
                                                     </div>
                                                 
@@ -173,7 +173,7 @@ const TimeLine = () => {
             <div className="relative">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
                     {bottomItems.map((data, index) => {
-                        const globalIndex = index + 3; 
+                        const globalIndex = index + 3;
                         return (
                             <motion.div 
                                 key={data.id}
@@ -253,16 +253,22 @@ const TimeLine = () => {
                                                         {/* Detalles adicionales */}
                                                         <div className="mt-4 space-y-3">
                                                             <div className="flex items-center text-sm text-gray-500">
-                                                                <svg className="w-4 h-4 mr-2 text-indigo-500" fill="currentColor" viewBox="0 0 20 20">
+                                                                <svg className={`w-4 h-4 mr-2 text-gray-600`} fill="currentColor" viewBox="0 0 20 20">
                                                                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                                                                 </svg>
-                                                                <span>Duración: 8 meses</span>
+                                                                <span>Duración: {data.duration}</span>
                                                             </div>
                                                             <div className="flex items-center text-sm text-gray-500">
-                                                                <svg className="w-4 h-4 mr-2 text-teal-500" fill="currentColor" viewBox="0 0 20 20">
+                                                                <svg className={`w-4 h-4 mr-2 text-gray-600`} fill="currentColor" viewBox="0 0 20 20">
+                                                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                                                                </svg>
+                                                                <span>Estado: {data.status}</span>
+                                                            </div>
+                                                            <div className="flex items-center text-sm text-gray-500">
+                                                                <svg className={`w-4 h-4 mr-2 text-gray-600`} fill="currentColor" viewBox="0 0 20 20">
                                                                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                                                                 </svg>
-                                                                <span>Logros destacados alcanzados</span>
+                                                                <span>{data.achievement}</span>
                                                             </div>
                                                         </div>
                                                         
