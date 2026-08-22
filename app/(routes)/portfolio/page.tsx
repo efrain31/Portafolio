@@ -13,6 +13,13 @@ import { useState, useEffect } from "react";
 const PortfolioPage = () => {
     const [expandedImage, setExpandedImage] = useState<{ url: string; index: number } | null>(null);
     const [carouselIndices, setCarouselIndices] = useState<{ [key: number]: number }>({});
+    const [selectedCategory, setSelectedCategory] = useState<"all" | "web" | "mobile">("all");
+    const [beforeAfterView, setBeforeAfterView] = useState<{ [key: number]: "before" | "after" }>({});
+
+    // Filtrar proyectos según categoría
+    const filteredPortfolio = selectedCategory === "all"
+        ? dataPortfolio
+        : dataPortfolio.filter(project => project.category === selectedCategory);
 
     // Auto-advance carousel every 7 seconds
     useEffect(() => {
@@ -76,6 +83,49 @@ const PortfolioPage = () => {
                         </motion.p>
                     </motion.div>
 
+                    {/* Filtro de Categorías */}
+                    <motion.div
+                        variants={itemVariants}
+                        className="flex justify-center gap-4 mb-16"
+                    >
+                        <motion.button
+                            onClick={() => setSelectedCategory("all")}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className={`px-6 py-3 rounded-full font-semibold transition-all ${
+                                selectedCategory === "all"
+                                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
+                                    : "bg-gray-700/50 text-gray-300 hover:bg-gray-700 border border-gray-600"
+                            }`}
+                        >
+                            Todos
+                        </motion.button>
+                        <motion.button
+                            onClick={() => setSelectedCategory("web")}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className={`px-6 py-3 rounded-full font-semibold transition-all ${
+                                selectedCategory === "web"
+                                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
+                                    : "bg-gray-700/50 text-gray-300 hover:bg-gray-700 border border-gray-600"
+                            }`}
+                        >
+                            Web
+                        </motion.button>
+                        <motion.button
+                            onClick={() => setSelectedCategory("mobile")}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className={`px-6 py-3 rounded-full font-semibold transition-all ${
+                                selectedCategory === "mobile"
+                                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
+                                    : "bg-gray-700/50 text-gray-300 hover:bg-gray-700 border border-gray-600"
+                            }`}
+                        >
+                            Móvil
+                        </motion.button>
+                    </motion.div>
+
                     {/* Modal para imagen ampliada */}
                     <AnimatePresence>
                         {expandedImage && (
@@ -114,7 +164,7 @@ const PortfolioPage = () => {
 
                     {/* Proyectos - Layout Simple */}
                     <div className="relative w-full space-y-20">
-                        {dataPortfolio.map((data, index) => (
+                        {filteredPortfolio.map((data, index) => (
                             <motion.div
                                 key={data.id}
                                 className="relative w-full"
@@ -132,14 +182,24 @@ const PortfolioPage = () => {
                                 >
                                     {/* Carrusel de Imágenes - Izquierda con Parallax */}
                                     <motion.div
-                                        className="relative rounded-3xl overflow-hidden h-80 lg:h-96 cursor-pointer group"
                                         initial={{ opacity: 0, x: -50, y: 30 }}
                                         whileInView={{ opacity: 1, x: 0, y: 0 }}
                                         viewport={{ once: false, margin: "-100px" }}
                                         transition={{ duration: 0.8, delay: 0.2 }}
+                                        className="space-y-6"
                                     >
+                                        <div
+                                            className={`relative rounded-3xl overflow-hidden cursor-pointer group ${
+                                                data.isMobile
+                                                    ? "w-40 mx-auto aspect-[9/20] sm:w-52"
+                                                    : "h-80 lg:h-96"
+                                            }`}
+                                        >
                                         {(() => {
-                                            const imageList = data.images || [data.image];
+                                            const isAfterView = beforeAfterView[index] === "after";
+                                            const imageList = isAfterView && data.imagesAfter && data.imagesAfter.length > 0
+                                                ? data.imagesAfter
+                                                : (data.images || [data.image]);
                                             const currentImageIndex = carouselIndices[index] || 0;
                                             return (
                                                 <motion.div
@@ -159,27 +219,93 @@ const PortfolioPage = () => {
                                                 </motion.div>
                                             );
                                         })()}
-                                        {/* Indicadores */}
+                                        </div>
+
+                                        {/* Indicadores con controles */}
                                         {(() => {
-                                            const imageList = data.images || [data.image];
+                                            const isAfterView = beforeAfterView[index] === "after";
+                                            const imageList = isAfterView && data.imagesAfter && data.imagesAfter.length > 0
+                                                ? data.imagesAfter
+                                                : (data.images || [data.image]);
+                                            const currentIndex = carouselIndices[index] || 0;
+
                                             return imageList.length > 1 ? (
                                                 <motion.div
-                                                    className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10"
+                                                    className="flex items-center justify-center gap-4 pt-6"
                                                     initial={{ opacity: 0 }}
                                                     whileInView={{ opacity: 1 }}
                                                     transition={{ delay: 0.5 }}
                                                 >
-                                                    {imageList.map((_, idx) => (
-                                                        <motion.div
-                                                            key={idx}
-                                                            className={`h-2 rounded-full transition-all ${
-                                                                idx === (carouselIndices[index] || 0)
-                                                                    ? "bg-white w-6"
-                                                                    : "bg-white/50 w-2"
-                                                            }`}
-                                                            whileHover={{ scale: 1.2 }}
-                                                        />
-                                                    ))}
+                                                    {/* Flecha Izquierda */}
+                                                    <motion.button
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            setCarouselIndices(prev => ({
+                                                                ...prev,
+                                                                [index]: prev[index] === 0 ? imageList.length - 1 : (prev[index] || 0) - 1
+                                                            }));
+                                                        }}
+                                                        className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 border border-white/40 text-white flex items-center justify-center transition-all"
+                                                        whileHover={{ scale: 1.1 }}
+                                                        whileTap={{ scale: 0.95 }}
+                                                    >
+                                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                                        </svg>
+                                                    </motion.button>
+
+                                                    {/* Barra de progreso y puntos */}
+                                                    <div className="flex flex-col items-center gap-2">
+                                                        {/* Puntos */}
+                                                        <div className="flex gap-2">
+                                                            {imageList.map((_, idx) => (
+                                                                <motion.button
+                                                                    key={idx}
+                                                                    onClick={(e) => {
+                                                                        e.stopPropagation();
+                                                                        setCarouselIndices(prev => ({
+                                                                            ...prev,
+                                                                            [index]: idx
+                                                                        }));
+                                                                    }}
+                                                                    className={`w-2.5 h-2.5 rounded-full transition-all ${
+                                                                        idx === currentIndex
+                                                                            ? "bg-white"
+                                                                            : "bg-white/40 hover:bg-white/60"
+                                                                    }`}
+                                                                    whileHover={{ scale: 1.3 }}
+                                                                />
+                                                            ))}
+                                                        </div>
+
+                                                        {/* Barra de progreso */}
+                                                        <div className="w-32 h-1 bg-white/20 rounded-full overflow-hidden">
+                                                            <motion.div
+                                                                className="h-full bg-white rounded-full"
+                                                                initial={{ width: 0 }}
+                                                                animate={{ width: `${((currentIndex + 1) / imageList.length) * 100}%` }}
+                                                                transition={{ duration: 0.3 }}
+                                                            />
+                                                        </div>
+                                                    </div>
+
+                                                    {/* Flecha Derecha */}
+                                                    <motion.button
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            setCarouselIndices(prev => ({
+                                                                ...prev,
+                                                                [index]: prev[index] === imageList.length - 1 ? 0 : (prev[index] || 0) + 1
+                                                            }));
+                                                        }}
+                                                        className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 border border-white/40 text-white flex items-center justify-center transition-all"
+                                                        whileHover={{ scale: 1.1 }}
+                                                        whileTap={{ scale: 0.95 }}
+                                                    >
+                                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                                        </svg>
+                                                    </motion.button>
                                                 </motion.div>
                                             ) : null;
                                         })()}
@@ -191,9 +317,24 @@ const PortfolioPage = () => {
                                             <motion.span initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="text-cyan-400 text-sm font-semibold tracking-widest uppercase">
                                                 Project {index + 1}
                                             </motion.span>
-                                            <motion.h2 variants={titleVariants} className="text-4xl lg:text-5xl font-bold text-white mt-3 mb-4">
-                                                {data.title}
-                                            </motion.h2>
+                                            <div className="flex items-start justify-between gap-4 mt-3 mb-4">
+                                                <motion.h2 variants={titleVariants} className="text-4xl lg:text-5xl font-bold text-white flex-1">
+                                                    {data.title}
+                                                </motion.h2>
+                                                {data.imagesAfter && (
+                                                    <motion.button
+                                                        onClick={() => setBeforeAfterView(prev => ({
+                                                            ...prev,
+                                                            [index]: prev[index] === "after" ? "before" : "after"
+                                                        }))}
+                                                        className="px-4 py-2 bg-cyan-500/20 hover:bg-cyan-500/40 text-cyan-400 text-sm font-semibold rounded-full transition-all border border-cyan-400/50 whitespace-nowrap mt-2"
+                                                        whileHover={{ scale: 1.05 }}
+                                                        whileTap={{ scale: 0.95 }}
+                                                    >
+                                                        {beforeAfterView[index] === "after" ? "Después" : "Antes"}
+                                                    </motion.button>
+                                                )}
+                                            </div>
                                         </div>
 
                                         <motion.p variants={paragraphVariants} className="text-gray-300 text-lg leading-relaxed">
@@ -258,7 +399,7 @@ const PortfolioPage = () => {
                         className="mt-16 pt-8 border-t border-gray-200/50 text-center"
                     >
                         <p className="text-gray-500 text-sm">
-                            Mostrando <span className="font-semibold text-blue-600">{dataPortfolio.length}</span> proyectos
+                            Mostrando <span className="font-semibold text-blue-600">{filteredPortfolio.length}</span> de <span className="font-semibold text-blue-600">{dataPortfolio.length}</span> proyectos
                         </p>
                     </motion.div>
                 </motion.div>
