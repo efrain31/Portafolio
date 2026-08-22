@@ -321,7 +321,7 @@ const PortfolioPage = () => {
                                                 <motion.h2 variants={titleVariants} className="text-4xl lg:text-5xl font-bold text-white flex-1">
                                                     {data.title}
                                                 </motion.h2>
-                                                {data.imagesAfter && (
+                                                {data.imagesAfter && data.imagesAfter.length > 0 && (
                                                     <motion.button
                                                         onClick={() => setBeforeAfterView(prev => ({
                                                             ...prev,
